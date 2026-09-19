@@ -1,0 +1,24 @@
+<!doctype html><html lang="mr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lakhan Institute</title><style>
+body{margin:0;font-family:Arial;background:#f3f6ff;color:#172033}header{background:#2457d6;color:#fff;text-align:center;padding:25px}nav{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;background:#fff;padding:12px;position:sticky;top:0}button{background:#2457d6;color:#fff;border:0;border-radius:9px;padding:11px;cursor:pointer}main{max-width:850px;margin:20px auto;padding:0 14px}.page{display:none}.active{display:block}.card{background:#fff;padding:20px;margin:14px 0;border-radius:16px;box-shadow:0 3px 12px #0001}.q{border:1px solid #dde3ef;border-radius:10px;padding:14px;margin:12px 0}label{display:block;padding:6px}input[type=radio]{width:auto}input:not([type=radio]){width:100%;padding:11px;margin:7px 0;border:1px solid #ccd5e5;border-radius:8px;box-sizing:border-box}h2{color:#2457d6}</style></head><body>
+<header><h1>📘 Lakhan Institute</h1><p>अभ्यास • ऑनलाइन टेस्ट • निकाल</p></header>
+<nav><button onclick="go('home')">🏠 मुख्यपृष्ठ</button><button onclick="go('syllabus')">📚 अभ्यासक्रम</button><button onclick="go('test')">📝 ऑनलाइन टेस्ट</button><button onclick="go('result')">📊 निकाल</button><button onclick="go('profile')">👤 माझे प्रोफाइल</button><button onclick="go('account')">🔐 माझे खाते</button></nav>
+<main>
+<section id="home" class="page active card"><h2>नमस्कार! 👋</h2><p>Lakhan Institute मध्ये अभ्यासाचा सराव करा.</p><button onclick="go('test')">टेस्ट सुरू करा →</button></section>
+<section id="syllabus" class="page card"><h2>📚 अभ्यासक्रम — इयत्ता 8वी</h2><h3>🔢 गणित</h3><p>संख्या, अपूर्णांक, दशांश, बीजगणित, भूमिती, क्षेत्रफळ व घनफळ.</p><h3>📝 मराठी</h3><p>व्याकरण, शब्दसंपदा, वाचन आकलन आणि लेखन.</p><h3>🧠 बुद्धिमत्ता</h3><p>मालिका, वर्गीकरण, साम्य, दिशा आणि तर्कशक्ती.</p><h3>🌍 सामान्य ज्ञान</h3><p>भारत, महाराष्ट्र, विज्ञान आणि क्रीडा.</p></section>
+<section id="test" class="page card"><h2>📝 ऑनलाइन टेस्ट</h2><p>5 प्रश्न • 5 गुण</p><form id="quiz">
+<div class="q"><b>1. 25 × 4 = ?</b><label><input type="radio" name="q1" value="100">100</label><label><input type="radio" name="q1" value="80">80</label><label><input type="radio" name="q1" value="120">120</label></div>
+<div class="q"><b>2. महाराष्ट्राची राजधानी?</b><label><input type="radio" name="q2" value="मुंबई">मुंबई</label><label><input type="radio" name="q2" value="पुणे">पुणे</label><label><input type="radio" name="q2" value="नाशिक">नाशिक</label></div>
+<div class="q"><b>3. 3, 6, 9, 12, ?</b><label><input type="radio" name="q3" value="15">15</label><label><input type="radio" name="q3" value="16">16</label><label><input type="radio" name="q3" value="18">18</label></div>
+<div class="q"><b>4. सूर्य कोणत्या दिशेला उगवतो?</b><label><input type="radio" name="q4" value="पूर्व">पूर्व</label><label><input type="radio" name="q4" value="पश्चिम">पश्चिम</label><label><input type="radio" name="q4" value="उत्तर">उत्तर</label></div>
+<div class="q"><b>5. 1/2 + 1/2 = ?</b><label><input type="radio" name="q5" value="1">1</label><label><input type="radio" name="q5" value="1/2">1/2</label><label><input type="radio" name="q5" value="2">2</label></div><button>निकाल पाहा</button></form></section>
+<section id="result" class="page card"><h2>📊 निकाल</h2><p id="score">अजून टेस्ट दिलेली नाही.</p></section>
+<section id="profile" class="page card"><h2>👤 माझे प्रोफाइल</h2><input id="name" placeholder="विद्यार्थ्याचे नाव"><input id="cls" placeholder="इयत्ता"><button onclick="saveP()">जतन करा</button><p id="pm"></p></section>
+<section id="account" class="page card"><h2>🔐 माझे खाते</h2><p>डेमो खाते: माहिती या ब्राउझरमध्ये जतन होते.</p><input id="email" type="email" placeholder="ई-मेल"><input id="pass" type="password" placeholder="पासवर्ड"><button onclick="saveA()">खाते जतन करा</button><p id="am"></p></section>
+</main><footer style="text-align:center;padding:20px">© 2026 Lakhan Institute</footer>
+<script>
+function go(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');scrollTo(0,0)}
+const a={q1:'100',q2:'मुंबई',q3:'15',q4:'पूर्व',q5:'1'};
+quiz.onsubmit=e=>{e.preventDefault();let n=0;for(let q in a){let x=document.querySelector('input[name='+q+']:checked');if(x&&x.value==a[q])n++}score.innerHTML='गुण: '+n+' / 5<br>टक्केवारी: '+(n*20)+'%';go('result')};
+function saveP(){localStorage.name=name.value;localStorage.cls=cls.value;pm.textContent='प्रोफाइल जतन झाले. ✅'}
+function saveA(){localStorage.email=email.value;am.textContent='खाते माहिती जतन झाली. ✅'}
+</script></body></html>
